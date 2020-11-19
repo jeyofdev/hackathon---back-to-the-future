@@ -6,6 +6,7 @@ import Choice from './Choice';
 const Home = () => {
   const [persos, setPersos] = useState([]);
   const [choice, setChoice] = useState(false);
+  const [currentPersoId, setCurrentPerso] = useState({});
 
   useEffect(() => {
     handleAxios();
@@ -18,8 +19,9 @@ const Home = () => {
       .then((data) => setPersos(data));
   };
 
-  const handleChoice = () => {
+  const handleChoice = (e) => {
     setChoice(!choice);
+    setCurrentPerso(e.target.parentNode.parentNode.id.slice(-1));
   };
 
   return (
@@ -34,7 +36,7 @@ const Home = () => {
         ))}
       </div>
 
-      {choice && <Choice />}
+      {choice && <Choice personnageId={currentPersoId} />}
     </div>
   );
 };
