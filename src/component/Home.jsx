@@ -1,9 +1,11 @@
 import react, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Personnage from './Personnage';
+import Choice from './Choice';
 
 const Home = () => {
   const [persos, setPersos] = useState([]);
+  const [choice, setChoice] = useState(false);
 
   useEffect(() => {
     handleAxios();
@@ -17,7 +19,7 @@ const Home = () => {
   };
 
   const handleChoice = () => {
-    console.log('ok');
+    setChoice(!choice);
   };
 
   return (
@@ -31,6 +33,8 @@ const Home = () => {
           />
         ))}
       </div>
+
+      {choice && <Choice />}
     </div>
   );
 };
