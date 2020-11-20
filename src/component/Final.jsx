@@ -1,12 +1,11 @@
-import React from 'react'
+import React from 'react';
 
+const Final = () => {
+  return (
+    <div>
+      <h1>Thank you for your Contribution</h1>
+    </div>
+  );
+};
 
-const Final = () =>{
-    return(
-        <div>
-            <h1>Thank you for your Contribution</h1>
-        </div>
-    )
-}
-
-export default Final:
+export default Final;
