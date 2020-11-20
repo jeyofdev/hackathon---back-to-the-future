@@ -2,22 +2,32 @@ import react, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Personnage from './Personnage';
 import Choice from './Choice';
+import { Link } from 'react-router-dom';
+import '../styles/css/components/Home.css';
 
 const Home = () => {
-  const [persos, setPersos] = useState([]);
-  const [choice, setChoice] = useState(false);
+  const [persos, setPersos] = useState([]); // stockes les personnages
+  const [choice, setChoice] = useState(false); // vérifier si l'utilisateur à cliqué sur le personne (true)
   const [currentPersoId, setCurrentPerso] = useState({});
 
   useEffect(() => {
-    handleAxios();
+    handleAxiosPersos();
   }, []);
 
-  const handleAxios = () => {
+  const handleAxiosPersos = () => {
     axios
       .get('http://localhost:3001/api/history')
       .then((response) => response.data)
       .then((data) => setPersos(data));
   };
+
+  // const handleAxiosProblem = () => {
+  //   axios
+  //     .get('http://localhost:3001/api/problems')
+  //     .then((response) => response.data)
+  //     .then((data) => data.filter()
+  //     setPersos(data));
+  // };
 
   const handleChoice = (e) => {
     setChoice(!choice);
@@ -25,18 +35,23 @@ const Home = () => {
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        {persos.map((perso) => (
-          <Personnage
-            key={perso.id}
-            perso={perso}
-            handleChoice={handleChoice}
-          />
-        ))}
-      </div>
+    <div className="Home">
+      <div className="container">
+        <h1>Choose your story.</h1>
+        <div className="row">
+          {persos.map((perso) => (
+            <Link to={`/choice/${perso.id}/`}>
+              <Personnage
+                key={perso.id}
+                perso={perso}
+                handleChoice={handleChoice}
+              />
+            </Link>
+          ))}
+        </div>
 
-      {choice && <Choice personnageId={currentPersoId} />}
+        {choice && <Choice /*personnageId={currentPersoId}*/ />}
+      </div>
     </div>
   );
 };
