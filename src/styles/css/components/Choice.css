@@ -1,4 +1,4 @@
-.background{
+.background {
   background-image: url('https://wallpaperset.com/w/full/5/3/0/150272.jpg');
   height: 100%;
   display: flex;
@@ -7,13 +7,12 @@
 
 .background-opacity {
   opacity: 0.5;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    z-index: 1;
-    background-color: black;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  background-color: black;
 }
-
 
 .hide {
   display: none;
@@ -24,10 +23,10 @@
 }
 
 .Choice {
-    width: 80%;
-    margin: auto;
-    border-radius: 5px;
-z-index: 10;
+  width: 80%;
+  margin: auto;
+  border-radius: 5px;
+  z-index: 10;
 }
 
 .Choice .resolve {
@@ -44,12 +43,12 @@ z-index: 10;
   margin: 0 0.75rem;
 }
 
-.Choice .resolve{
-  display:flex;
+.Choice .resolve {
+  display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
- .Choice .resolve button {
+.Choice .resolve button {
   border-radius: 8px;
   padding: 20px;
   text-decoration: none;
@@ -59,8 +58,6 @@ z-index: 10;
   transform: scale(1);
   background-color: #fff;
   color: #5f5c5c;
-
-
 }
 
 .Choice .resolve button:hover {
@@ -74,12 +71,12 @@ z-index: 10;
   background-color: #5f5c5c;
 }
 
-
-.Choice .personnage{
+.Choice .personnage {
   width: 50%;
 }
-.Choice .content{
-  width:50%;
+
+.Choice .content {
+  width: 50%;
   flex-direction: column;
   display: flex;
   height: 100%;
@@ -87,7 +84,8 @@ z-index: 10;
   align-items: center;
   justify-content: space-evenly;
 }
-.Choice p{
+
+.Choice p {
   font-size: 20px;
 }
 
@@ -96,8 +94,9 @@ z-index: 10;
 }
 
 .Choice .personnage {
-  height: 150px;
-  background-color: red;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .Choice .Problem_content {
@@ -120,7 +119,7 @@ z-index: 10;
   padding: 50px;
   margin: 50px;
 }
-.Choice .continue{
+.Choice .continue {
   border-radius: 8px;
   padding: 10px;
   text-decoration: none;
