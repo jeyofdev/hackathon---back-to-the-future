@@ -3,18 +3,26 @@ import axios from 'axios';
 import Button from './Button';
 import '../styles/css/components/Choice.css';
 
-const Choice = ({ match }) => {
-  const { idHistory } = match.params;
+const Choice = ({ match, personnage }) => {
+  const { id, idChoice } = match.params;
   const [problem, setProblem] = useState([]);
   const [currentProblem, setCurrentProblem] = useState({});
   const [resolves, setResolves] = useState([]);
   const [solution, setSolution] = useState('false');
   const [step, setStep] = useState(0);
   const [idResolve, setIdResolve] = useState(null);
+  const [currentPerso, setCurrentPerso] = useState({});
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/api/history/${idHistory}/problems`)
+      .get(`http://localhost:3001/api/history/${id}`)
+      .then((response) => response.data)
+      .then((data) =>
+        setCurrentPerso(data.filter((perso) => perso.id === Number(id))[0])
+      );
+
+    axios
+      .get(`http://localhost:3001/api/history/${id}/problems`)
       .then((response) => response.data)
       .then((data) => data.filter((problem, index) => index === step)[0])
       .then((data2) =>
@@ -55,7 +63,12 @@ const Choice = ({ match }) => {
         <div>
           {solution === 'false' && (
             <div className="Problem_content">
-              <div className="personnage"></div>
+              <div
+                className="personnage"
+                style={{
+                  backgroundImage: `url(${currentPerso.images})`,
+                }}
+              ></div>
               <div className="content">
                 <p className="Problem_description">{problem.description}</p>
                 <div className="resolve">

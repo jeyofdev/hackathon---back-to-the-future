@@ -9,8 +9,8 @@ function App() {
     <div className="App">
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/choice/:idHistory" component={Choice} />
-        <Route path="/button/:id/" component={Button} />
+        <Route path="/history/:id/choice/:idChoice" component={Choice} />
+        {/* <Route path="/button/:id/" component={Button} /> */}
       </Switch>
     </div>
   );

@@ -41,7 +41,7 @@ const Home = () => {
         <div className="row">
           {persos.map((perso) => (
             <div className="link-block col-md-4">
-              <Link to={`/choice/${perso.id}/`}>
+              <Link to={`/history/${perso.id}/choice/${perso.id}/`}>
                 <Personnage
                   key={perso.id}
                   perso={perso}
