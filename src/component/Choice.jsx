@@ -8,8 +8,9 @@ const Choice = ({ match }) => {
   const [problem, setProblem] = useState([]);
   const [currentProblem, setCurrentProblem] = useState({});
   const [resolves, setResolves] = useState([]);
-  const [solution, setSolution] = useState(false);
+  const [solution, setSolution] = useState('false');
   const [step, setStep] = useState(0);
+  const [idResolve, setIdResolve] = useState(null);
 
   useEffect(() => {
     axios
@@ -29,8 +30,9 @@ const Choice = ({ match }) => {
     setResolves(data3);
   };
 
-  const handleSolution = (solutionIsTrue) => {
+  const handleSolution = (solutionIsTrue, idResolve) => {
     setSolution(solutionIsTrue);
+    setIdResolve(idResolve);
   };
 
   const handleSubmit = (newStep) => {
@@ -39,26 +41,57 @@ const Choice = ({ match }) => {
   };
 
   return (
-    <div
-      style={{ backgroundImage: `url(${problem.background_image})` }}
-      className="Choice"
-    >
-      {problem.title}
-      <p>{problem.description}</p>
-      <div className="resolve">
-        {resolves !== [] &&
-          resolves.map((resolve) => (
-            <div className="btn-resolve">
-              <button onClick={() => handleSolution(resolve.solution)}>
-                {resolve.title}
-              </button>
-              {solution === 'true' && <p>{resolve.all_description}</p>}
+    <div className="background">
+      <div className="background-opacity"></div>
+      <div
+        style={{
+          backgroundImage: `url(${problem.background_image})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+        }}
+        className="Choice"
+      >
+        <h1 className="Problem_title">{problem.title}</h1>
+        <div>
+          {solution === 'false' && (
+            <div className="Problem_content">
+              <div className="personnage"></div>
+              <div className="content">
+                <p className="Problem_description">{problem.description}</p>
+                <div className="resolve">
+                  {resolves !== [] &&
+                    resolves.map((resolve) => (
+                      <ul className="btn-resolve">
+                        {solution === 'true' && (
+                          <p>{resolve.all_description}</p>
+                        )}
+                        <button
+                          onClick={() =>
+                            handleSolution(resolve.solution, resolve.id)
+                          }
+                        >
+                          {resolve.title}
+                        </button>
+                      </ul>
+                    ))}
+                </div>
+              </div>
             </div>
-          ))}
+          )}
+          {solution === 'true' && (
+            <div>
+              {resolves
+                .filter((resolve) => resolve.id === idResolve)
+                .map((resolve) => (
+                  <p className="Problem_Alldescription">
+                    {resolve.all_description}
+                  </p>
+                ))}
+              <button onClick={() => handleSubmit(step + 1)}>ok</button>
+            </div>
+          )}
+        </div>
       </div>
-      {solution === 'true' && (
-        <button onClick={() => handleSubmit(step + 1)}>ok</button>
-      )}
     </div>
   );
 };
