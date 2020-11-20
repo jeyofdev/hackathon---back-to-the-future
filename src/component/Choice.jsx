@@ -87,7 +87,7 @@ const Choice = ({ match }) => {
                     {resolve.all_description}
                   </p>
                 ))}
-              <button onClick={() => handleSubmit(step + 1)}>ok</button>
+              <button onClick={() => handleSubmit(step + 1)}>Continuez</button>
             </div>
           )}
         </div>
