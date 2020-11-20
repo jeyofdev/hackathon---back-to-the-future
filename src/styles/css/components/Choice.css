@@ -110,6 +110,7 @@ z-index: 10;
   border-radius: 8px;
   color: #5f5c5c;
   padding: 20px;
+  margin-right: 5px;
 }
 
 .Choice .Problem_Alldescription {
@@ -118,4 +119,26 @@ z-index: 10;
   color: #5f5c5c;
   padding: 50px;
   margin: 50px;
+}
+.Choice .continue{
+  border-radius: 8px;
+  padding: 10px;
+  text-decoration: none;
+  border: none;
+  width: 200px;
+  margin: 20px 5px;
+  transform: scale(1);
+  background-color: #fff;
+  color: #5f5c5c;
+}
+
+.Choice .continue:hover {
+  border-radius: 8px;
+  padding: 10px;
+  text-decoration: none;
+  border: none;
+  transform: scale(1.05);
+  margin: 20px 5px;
+  color: #fff;
+  background-color: #5f5c5c;
 }
