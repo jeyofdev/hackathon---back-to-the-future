@@ -4,7 +4,7 @@
   background-position: center center;
   background-size: cover;
   padding: 1.5rem;
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
 }
@@ -20,7 +20,6 @@
 }
 
 .Home .link-block {
-  height: 400px;
   margin: 0 15px;
 }
 
@@ -38,4 +37,9 @@
 
 .Home .link-block .card .card-body {
   padding: 0.8rem;
+}
+
+.Home .link-block .card .card-body h2 {
+  margin-bottom: 0;
+  font-size: 1.75rem;
 }

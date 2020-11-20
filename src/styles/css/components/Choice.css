@@ -1,0 +1,25 @@
+.hide {
+  display: none;
+}
+
+.show {
+  display: none;
+}
+
+.Choice {
+  height: 100%;
+}
+
+.Choice .resolve {
+  display: flex;
+}
+
+.Choice .resolve {
+  display: flex;
+  justify-content: center;
+}
+
+.Choice .btn-resolve {
+  display: inline-block;
+  margin: 0 0.75rem;
+}
