@@ -1,12 +1,19 @@
-import './App.css'
-import Home from './component/Home'
+import './App.css';
+import Home from './component/Home';
+import { Switch, Route } from 'react-router-dom';
+import Choice from './component/Choice';
+import Button from './component/Button';
 
 function App() {
-    return (
-        <div className="App">
-            <Home />
-        </div>
-    )
+  return (
+    <div className="App">
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/history/:id/choice/:idChoice" component={Choice} />
+        {/* <Route path="/button/:id/" component={Button} /> */}
+      </Switch>
+    </div>
+  );
 }
 
-export default App
+export default App;
