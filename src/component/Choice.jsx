@@ -3,7 +3,8 @@ import axios from 'axios';
 import Button from './Button';
 import '../styles/css/components/Choice.css';
 
-const Choice = ({ match, personnage }) => {
+const Choice = ({ match, personnage, history }) => {
+  console.log(history);
   const { id, idChoice } = match.params;
   const [problem, setProblem] = useState([]);
   const [currentProblem, setCurrentProblem] = useState({});
@@ -12,8 +13,15 @@ const Choice = ({ match, personnage }) => {
   const [step, setStep] = useState(0);
   const [idResolve, setIdResolve] = useState(null);
   const [currentPerso, setCurrentPerso] = useState({});
+  const [allProblems, setAllProblems] = useState([]);
+
+  console.log(step, allProblems.length);
 
   useEffect(() => {
+    axios
+      .get(`http://localhost:3001/api/history/${id}/problems`)
+      .then((response) => response.data)
+      .then((data) => setAllProblems(data));
     axios
       .get(`http://localhost:3001/api/history/${id}`)
       .then((response) => response.data)
@@ -46,6 +54,9 @@ const Choice = ({ match, personnage }) => {
   const handleSubmit = (newStep) => {
     setStep(newStep);
     setSolution('false');
+    if (step === allProblems.length - 1) {
+      history.push('/');
+    }
   };
 
   return (
@@ -104,7 +115,7 @@ const Choice = ({ match, personnage }) => {
                 className="continue"
                 onClick={() => handleSubmit(step + 1)}
               >
-                Continuez
+                Next
               </button>
             </div>
           )}
