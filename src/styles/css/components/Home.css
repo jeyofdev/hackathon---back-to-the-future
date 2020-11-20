@@ -1,7 +1,41 @@
-.container {
+.Home {
   background-image: url('https://wallpaperset.com/w/full/5/3/0/150272.jpg');
-  background-color: red;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  padding: 1.5rem;
+  height: 100vh;
+  display: flex;
+  align-items: center;
 }
+
 .Home h1 {
-  font-size: 1rem;
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 3.5rem;
+}
+
+.Home .container .row {
+  justify-content: center;
+}
+
+.Home .link-block {
+  height: 400px;
+  margin: 0 15px;
+}
+
+.Home .link-block a {
+  color: black;
+}
+
+.Home .link-block .card {
+  padding: 0.6rem;
+}
+
+.Home .link-block .card > img {
+  border-radius: 0.25rem;
+}
+
+.Home .link-block .card .card-body {
+  padding: 0.8rem;
 }

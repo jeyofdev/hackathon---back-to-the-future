@@ -40,13 +40,15 @@ const Home = () => {
         <h1>Choose your story.</h1>
         <div className="row">
           {persos.map((perso) => (
-            <Link to={`/choice/${perso.id}/`}>
-              <Personnage
-                key={perso.id}
-                perso={perso}
-                handleChoice={handleChoice}
-              />
-            </Link>
+            <div className="link-block col-md-4">
+              <Link to={`/choice/${perso.id}/`}>
+                <Personnage
+                  key={perso.id}
+                  perso={perso}
+                  handleChoice={handleChoice}
+                />
+              </Link>
+            </div>
           ))}
         </div>
 
