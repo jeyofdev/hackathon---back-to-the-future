@@ -4,7 +4,6 @@ import Button from './Button';
 import '../styles/css/components/Choice.css';
 
 const Choice = ({ match, personnage, history }) => {
-  console.log(history);
   const { id, idChoice } = match.params;
   const [problem, setProblem] = useState([]);
   const [currentProblem, setCurrentProblem] = useState({});
@@ -14,8 +13,6 @@ const Choice = ({ match, personnage, history }) => {
   const [idResolve, setIdResolve] = useState(null);
   const [currentPerso, setCurrentPerso] = useState({});
   const [allProblems, setAllProblems] = useState([]);
-
-  console.log(step, allProblems.length);
 
   useEffect(() => {
     axios
